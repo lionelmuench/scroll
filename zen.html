@@ -1,0 +1,35 @@
+<!-- zen.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Mode</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main scroller and checkmark -->
+  <div class="main-container">
+    <div class="container">
+      <div class="letter-column" data-index="0"></div>
+      <div class="letter-column" data-index="1"></div>
+      <div class="letter-column" data-index="2"></div>
+      <div class="letter-column" data-index="3"></div>
+    </div>
+    <div class="checkmark-container">
+      <div id="checkmark-btn" class="checkmark-btn"></div>
+      <div id="reset-btn"     class="reset-btn">↺</div>
+    </div>    
+  </div>
+
+  <!-- Word Bank Section -->
+  <div class="word-bank-section">
+    <div id="word-bank-box" class="word-bank-box">
+      <div id="word-bank" class="word-bank"></div>
+    </div>
+    <button id="expand-btn" class="expand-btn">⌄</button>
+  </div>
+
+  <script type="module" src="js/zenMode.js"></script>
+</body>
+</html>

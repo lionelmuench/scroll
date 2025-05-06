@@ -1,0 +1,210 @@
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* center the scroller vertically */
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* Letter Columns */
+.letter-column {
+    width: 70px;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    user-select: none;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.letter-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.letter {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ccc;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.letter.active {
+    color: black;
+    transform: scale(1.2);
+}
+
+.letter-above, .letter-below {
+    opacity: 0.2;
+}
+
+/* Visual Feedback */
+.letter-column.last-used {
+    border-color: #ff5e5e;
+}
+
+.letter-column.locked {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Checkmark Button */
+.checkmark-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;           /* space between the two buttons */
+}
+
+.reset-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f44336; /* red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    transition: background 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.reset-btn:active {
+    transform: scale(0.9);
+    background-color: #e53935;
+}
+
+
+.checkmark-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.checkmark-btn::before {
+    content: '';
+    width: 20px;
+    height: 10px;
+    border-left: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.checkmark-btn:active {
+    transform: scale(0.9);
+    background-color: #45A049;
+}
+
+/* Word Bank */
+.word-bank-section {
+    width: calc(70px * 4 + 20px * 3 + 60px + 20px);
+    max-width: 500px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* keep bank under the scroller */
+}
+
+.word-bank-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    background-color: #f0f2f5;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 5px 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    
+    /* instead of height:100px: */
+    max-height: 100px;       /* collapsed: only one row high */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.word-bank-box.expanded {
+    /* instead of height:calc(...): */
+    max-height: calc(100vh - 260px);
+    overflow-y: auto;
+    grid-auto-rows: 50px;
+    row-gap: 10px;
+}
+
+
+.word-bank {
+    display: contents;
+}
+
+.word-box {
+    background: #ffffff;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 78px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Expand Button */
+.expand-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 10px auto 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.expand-btn.expanded {
+    transform: rotate(180deg);
+}
